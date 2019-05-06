@@ -15,8 +15,18 @@ class Modal extends Component {
   }
 
   render() {
+    const { visible } = this.props
+
     return (
-      <div>1234</div>
+      visible && <div>
+        <div className="for-modal-mask"></div>
+        <div className="for-modal-wrap">
+          <div className="for-modal-body">
+            this is content
+            <button onClick={() => this.props.onClose()}>close</button>
+          </div>
+        </div>
+      </div>
     )
   }
 }
