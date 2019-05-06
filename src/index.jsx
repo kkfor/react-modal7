@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
+import { CSSTransition } from 'react-transition-group'
 
 class Modal extends Component {
   constructor(props) {
@@ -18,15 +19,22 @@ class Modal extends Component {
     const { visible } = this.props
 
     return (
-      visible && <div>
-        <div className="for-modal-mask"></div>
-        <div className="for-modal-wrap">
-          <div className="for-modal-body">
-            this is content
-            <button onClick={() => this.props.onClose()}>close</button>
+      <CSSTransition
+        in={visible}
+        timeout={300}
+        classNames="for-animation"
+        unmountOnExit
+      >
+        <div>
+          <div className="for-modal-mask"></div>
+          <div className="for-modal-wrap">
+            <div className="for-modal-body">
+              this is content
+              <button onClick={() => this.props.onClose()}>close</button>
+            </div>
           </div>
         </div>
-      </div>
+      </CSSTransition>
     )
   }
 }
