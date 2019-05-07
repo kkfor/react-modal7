@@ -4,13 +4,14 @@ const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  entry: './example/index.js',
+  entry: './example/index.tsx',
   devtool: isDev && 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -24,6 +25,13 @@ module.exports = {
               '@babel/plugin-proposal-class-properties'
             ]
           }
+        }
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
         }
       },
       {
