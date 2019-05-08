@@ -1,7 +1,15 @@
 import * as React from 'react';
 import Modal from '../../src'
 
-class App extends React.Component {
+interface P {
+}
+
+interface S {
+  visible: boolean
+}
+
+
+class App extends React.Component<P, S> {
   constructor(props) {
     super(props)
 
@@ -23,12 +31,12 @@ class App extends React.Component {
   }
 
   render() {
-    // const { visible } = this.state
+    const { visible } = this.state
 
     return (
       <div>
         <button onClick={() => this.open()}>打开</button>
-        {/* <Modal visible={visible} onClose={() => this.close()}>this is content</Modal> */}
+        <Modal visible={visible} onClose={() => this.close()}>this is content</Modal>
       </div>
     );
   }

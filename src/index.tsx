@@ -1,8 +1,17 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import './index.css'
 import { CSSTransition } from 'react-transition-group'
 
-class Modal extends Component {
+interface P {
+  visible: boolean,
+  onClose: () => void
+}
+
+interface S {
+
+}
+
+class Modal extends React.Component<P, S> {
   constructor(props) {
     super(props)
     this.state = {
